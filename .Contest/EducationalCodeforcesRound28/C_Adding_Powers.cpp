@@ -1,0 +1,79 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define pii pair<int , int>
+#define ln '\n'
+#define fo(i, n) for(int i = 0 ; i < n ; ++i)
+#define all(x) (x).begin(),(x).end()
+#define sz(x) (int)(x).size()
+#define pb(x) push_back(x)
+#define mt(x , y , z) make_tuple(x , y , z)
+
+// 48-57 -> 0-9  65-90 -> A-Z 97-122 -> a-z
+
+const int dx[8] = {1, 0, -1, 0, 1, 1, -1, -1};
+const int dy[8] = {0, 1, 0, -1, -1, 1, -1, 1};
+int MOD = 1e9 + 7;
+
+const int N  = 2e5 + 10;
+//always check input!!!
+
+int k;
+int maxPow(ll x){
+    int i = 0;
+    ll ans = pow(k , i);
+    while(ans <= x){
+        ans = pow(k , ++i);
+    }
+    return i;
+}
+void solve()
+{
+    int n;
+    cin >> n >> k;
+    ll a[n];
+    map<int , bool> mark;
+    fo(i , n) cin >> a[i];
+    fo(i , n){
+        if(a[i] == 0){
+            continue;
+        }
+        int j = maxPow(a[i]);
+        j--;
+        ll p = pow(k , j);
+        while(a[i] > 0 && j >= 0){
+            p = pow(k , j);
+            if(a[i] - p < 0){
+                j--;
+                continue;
+            }
+            if(mark[j]){
+                cout << "NO\n";
+                return;
+            }
+            a[i] -= p;
+            mark[j] = true;
+            j--;
+        }
+    }
+    fo(i , n){
+        if(a[i] != 0){
+            cout << "NO\n";
+            return;
+        }
+    }
+    cout << "YES\n";
+}
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    /*------------------------------------*/
+    int t = 1;
+    cin >> t;
+    while(t--){
+        solve();
+    }
+    return 0;
+}
+//check long long memory limit
+//check int overflow

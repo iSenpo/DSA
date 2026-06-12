@@ -1,0 +1,1 @@
+{"name":"Local: K","url":"c:\\GitHub\\Practice\\Course\\.Contest\\K.cpp","tests":[{"id":1767121724265,"input":"3\n2 1\n2 2\n3 2\n0 3 2\n4 1\n1 0 2 3\n","output":"2\n2\n3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\GitHub\\Practice\\Course\\.Contest\\K.cpp","group":"local","local":true}

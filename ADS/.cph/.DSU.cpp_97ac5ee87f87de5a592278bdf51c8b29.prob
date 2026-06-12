@@ -1,0 +1,1 @@
+{"name":"Local: DSU","url":"c:\\GitHub\\Practice\\Course\\ADS\\DSU.cpp","tests":[{"id":1763563671549,"input":"5 5\nm 1 4\n? 2 1\nm 2 3\nm 1 2\n? 4 3","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\GitHub\\Practice\\Course\\ADS\\DSU.cpp","group":"local","local":true}

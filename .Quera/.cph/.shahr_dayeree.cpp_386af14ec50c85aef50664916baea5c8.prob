@@ -1,0 +1,1 @@
+{"name":"Local: shahr_dayeree","url":"c:\\GitHub\\Practice\\Course\\.Quera\\shahr_dayeree.cpp","tests":[{"id":1772990739523,"input":"5 3\n1 0 0 1 0\n1 1 1\n","output":"YES"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\GitHub\\Practice\\Course\\.Quera\\shahr_dayeree.cpp","group":"local","local":true}
