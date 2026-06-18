@@ -21,21 +21,40 @@ const int MIN = -2e9 - 100;
 
 void solve()
 {
-    int s, k, m;
-    cin >> s >> k >> m;
-        
-    if(s <= k){
-        cout << max(0, s - m % k) << ln;
-    }
-	else{
-        if(m % (2*k) < k){
-            cout << s - m % k << ln;
-        } 
-        else{
-            cout << k - m % k << ln;
+    int n;
+    cin >> n;
+    int a[n];
+    fo(i , n) cin >> a[i];
+    int target = -1;
+    int j = 0;
+    fo(i , n){
+        if(a[i] != n - i){
+            target = n - i;
+            //cerr << target << ln;
+            j = i - 1;
+            break;
         }
-    } 
-    
+    }
+    int i = 0;
+    for(i ; i <= j ; i++){
+        cout << a[i] << ' ';
+    }
+    if(target != -1){
+        vector<int> r;
+        for(i ; a[i] != target ; i++){
+            r.push_back(a[i]);
+        }
+        r.push_back(a[i++]);
+        reverse(all(r));
+        for(int k : r){
+            cout << k << ' ';
+        }
+    }
+    for(i ; i < n ; i++){
+        cout << a[i] << ' ';
+    }
+    cout << ln;
+
 }
 int main(){
     ios::sync_with_stdio(false); cin.tie(NULL);
