@@ -21,44 +21,27 @@ const int MIN = -2e9 - 100;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<int> a(4 * n);
-    int cnt = 1 ;
-    int cnt2 = n;
-    fo(i , n){
-        if(i%2 == 0){
-            a[i] = cnt;
-            cnt++;
+    ll n , k;
+    cin >> n >> k;
+    ll t = k / n;
+    ll ans = k;
+    ll l = 0;
+    ll r = 1e18;
+    while(l <= r){
+        ll m = (l + r)/2;
+        if((k + m) - ((k + m)/n) == k){
+            ans += m;
+            break;
+        }
+        else if((k + m) - ((k + m)/n) < k){
+            l = m + 1;
         }
         else{
-            a[i] = cnt2;
-            cnt2--;
+            r = m - 1;
         }
     }
-    cnt = 1;
-    for(int i = n ; i < 3 * n ; i++){
-        a[i] = cnt;
-        i++;
-        a[i] = cnt;
-        cnt++;
-    }
-    cnt = 1;
-    cnt2 = n;
-    for(int i = 3 * n ; i < 4 * n ; i++){
-        if(i%2 == n%2){
-            a[i] = cnt;
-            cnt++;
-        }
-        else{
-            a[i] = cnt2;
-            cnt2--;
-        }
-    }
-    for(int i : a){
-        cout << i << ' ';
-    }
-    cout << ln;
+    if(ans%n == 0) ans--;
+    cout << ans << ln;
 }
 int main(){
     ios::sync_with_stdio(false); cin.tie(NULL);

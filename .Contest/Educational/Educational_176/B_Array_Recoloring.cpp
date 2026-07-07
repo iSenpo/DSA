@@ -21,11 +21,24 @@ const int MIN = -2e9 - 100;
 
 void solve()
 {
-    double n , x , y , z;
-    cin >> n >> x >> y >> z;
-    double noAI = ceil(n / (x + y));
-    double AI = ceil(z + ((n - floor(z * x)) / (x + (10 * y))));
-    cout << min(AI , noAI) << ln; 
+    int n , k;
+    cin >> n >> k;
+    int a[n];
+    fo(i , n) cin >> a[i];
+    if(k == 1){
+        int Max = a[0] + a[n - 1];
+        for(int i = 1 ; i < n - 1 ; i++){
+            Max = max(Max , a[i] + max(a[0] , a[n - 1]));
+        }
+        cout << Max << ln;
+        return;
+    }
+    sort(a , a + n);
+    ll ans = a[n - 1];
+    for(int i = n - 2 ; i >= n - 1 - k ; i--){
+        ans += a[i];
+    }
+    cout << ans << ln;
 }
 int main(){
     ios::sync_with_stdio(false); cin.tie(NULL);
