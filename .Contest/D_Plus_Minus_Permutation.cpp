@@ -18,30 +18,35 @@ const int N  = 2e5 + 10;
 const int INF = 2e9 + 100;
 const int MIN = -2e9 - 100;
 //always check input!!!
+ll gcd(ll a , ll b){
+    while(b){
+        ll t = a % b;
+        a = b;
+        b = t;
+    }
+    return a;
+}
+ll divisorCount(ll n){
 
+}
 void solve()
 {
-    ll n , k;
-    cin >> n >> k;
-    ll t = k / n;
-    ll ans = k;
-    ll l = 0;
-    ll r = 1e18;
-    while(l <= r){
-        ll m = (l + r)/2;
-        if((k + m) - ((k + m)/n) == k){
-            ans += m;
-            break;
-        }
-        else if((k + m) - ((k + m)/n) < k){
-            l = m + 1;
-        }
-        else{
-            r = m - 1;
-        }
+    ll n , x , y;
+    cin >> n >> x >> y;
+    ll sum = 0;
+    ll a = n / x;
+    ll b = n / y;
+    ll lcm = (1LL) * x / gcd(x , y) * y;
+    ll m = (1LL) * n / lcm;
+    if(x % y == 0){
+        cout << -((1LL) * (b - a) * ((b - a) + 1) / 2) << ln;
+        return;
     }
-    if(ans%n == 0) ans--;
-    cout << ans << ln;
+    a -= m;
+    b -= m;
+    ll pos = (1LL) * (n * (n + 1)) / 2 - ((n - a) * (n - a + 1)) / 2;
+    ll neg = (1LL) * (b * (b + 1)) / 2;
+    cout << pos  - neg << ln;
 }
 int main(){
     ios::sync_with_stdio(false); cin.tie(NULL);

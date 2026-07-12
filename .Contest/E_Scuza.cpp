@@ -21,42 +21,41 @@ const int MIN = -2e9 - 100;
 
 void solve()
 {
-    int n , x;
-    cin >> n >> x;
-    vector<int> od , ev;
-    fo(i , n){
-        int a;
-        cin >> a;
-        if(a & 1){
-            od.pb(a);
+    int n , q;
+    cin >> n >> q;
+    int a[n];
+    fo(i , n) cin >> a[i];
+    vector<ll> ps(n + 1);
+    ps[0] = 0;
+    fo(i , n) ps[i + 1] = ps[i] + a[i];
+    int mx[n];
+    mx[0] = a[0];
+    for(int i = 1; i < n ; i++){
+        mx[i] = max(mx[i - 1] , a[i]);
+    }
+    while(q--){
+        int k;
+        cin >> k;
+        int l = 0 , r = n - 1;
+        int m = (l + r)/2;
+        int flag = -1;
+        while(l <= r){
+            m = (l + r)/2;
+            if(mx[m] <= k){
+                l = m + 1;
+                flag = m;
+            }
+            else{
+                r = m - 1;
+            }
         }
-        else{
-            ev.pb(a);
+        if(flag == -1){
+            cout << 0 << ' ';
+            continue;
         }
+        cout << ps[flag + 1] << ' ';
     }
-    if(od.empty()){
-        cout << "No\n";
-        return;
-    }
-    if(x%2 == 0 && ev.empty()){
-        cout << "No\n";
-        return;
-    }
-    if(ev.size() >= x){
-        cout << "Yes\n";
-        return;
-    }
-    x -= ev.size();
-    if(x%2 == 1){
-        cout << "Yes\n";
-    }
-    else{
-        if(x + 1 <= od.size()){
-            cout << "Yes\n";
-            return;
-        }
-        cout << "No\n";
-    }
+    cout << ln;
 }
 int main(){
     ios::sync_with_stdio(false); cin.tie(NULL);
